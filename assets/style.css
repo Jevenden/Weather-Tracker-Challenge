@@ -1,0 +1,23 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1;
+  }
+
+.hero {
+    color: white;
+    border-radius: 0;
+    background: linear-gradient(
+    to right,
+    blue,
+    orange
+)}
+
+#submit {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+.input {
+    width: 100%;
+}
