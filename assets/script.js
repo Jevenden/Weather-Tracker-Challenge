@@ -9,7 +9,10 @@ let windBlock = $(".windBlock");
 let humidity = $("#humidity");
 let humBlock = $(".humBlock");
 let uvIndex = $("#uvIndex");
+let uvBlock = $(".uvBlock");
+let weatherIcon = $(".weatherIcon");
 let currentDate = $("#currentDate");
+let weatherDesc = $(".weatherDesc");
 let date = moment().format("MMMM Do YYYY");
 
 // API Key from OpenWeather
@@ -62,6 +65,12 @@ function getUVI(response) {
     url: queryURL,
     method: "GET",
   }).then(function (data) {
+    let icon = response.weather[0].icon;
+    let iconURL = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
+    let description = data.current.weather[0].description;
+    uvBlock.html("UV Index: " + data.current.uvi);
+    weatherIcon.html("<img src=" + iconURL + ">");
+    weatherDesc.html(description);
     console.log(data);
     displayUVI(data);
   });
@@ -69,9 +78,9 @@ function getUVI(response) {
 
 function displayUVI(data) {
   if (data.current.uvi < 2) {
-    uvIndex.css("background-color", "lightgreen");
+    uvIndex.css("background-color", "lightblue");
   } else if (data.current.uvi > 7) {
-    uvIndex.css("background-color", "lightred");
+    uvIndex.css("background-color", "tomato");
   } else {
     uvIndex.css("background-color", "lightyellow");
   }

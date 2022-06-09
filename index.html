@@ -48,27 +48,56 @@
       </form>
     </div>
 
-    <div class="col-8 border border-primary" id="uvIndex" style="height: 325px">
+    <div class="col-7 border border-primary" id="uvIndex" style="height: auto">
       <div class="row">
-        <h3 class="col-12 text-center font-weight-bolder" style="color: blue">
-          <span id="currentCity" style="color: black"></span>
+        <h3 class="col-12 text-center font-weight-bolder">
+          <span id="currentCity"></span>
         </h3>
       </div>
       <div>
-        <h4 class="text-center font-weight-bolder">
+        <h4 class="col-12 text-center font-weight-bolder">
           <span id="currentDate"></span>
         </h4>
       </div>
       <div class="row">
-        <h4 class="col-12 font-weight-bolder tempBlock"></h4>
-      </div>
-      <div class="row">
-        <h4 class="col-12 font-weight-bolder windBlock"></h4>
-      </div>
-      <div class="row">
-        <h4 class="col-12 font-weight-bolder humBlock"></h4>
+        <div class="col-8">
+          <div class="row">
+            <div class="col-12">
+              <h4 class="col-12 font-weight-bolder tempBlock"></h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <h4 class="col-12 font-weight-bolder windBlock"></h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <h4 class="col-12 font-weight-bolder humBlock"></h4>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <h4 class="col-12 font-weight-bolder uvBlock"></h4>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 weatherIcon"></div>
+          <div class="col-12 weatherDesc font-weight-bolder"></div>
+        </div>
       </div>
     </div>
+
+    <div class="col-2"></div>
+  </div>
+  <div class="row">
+    <div class="col-1"></div>
+    <div class="col-2 forecast" id="foreOne"></div>
+    <div class="col-2 forecast" id="foreTwo"></div>
+    <div class="col-2 forecast" id="foreThree"></div>
+    <div class="col-2 forecast" id="foreFour"></div>
+    <div class="col-2 forecast" id="foreFive"></div>
     <div class="col-1"></div>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
