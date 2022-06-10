@@ -18,8 +18,7 @@ let date = moment().format("dddd") + ", " + moment().format("MMMM Do");
 // API Key from OpenWeather
 let APIKey = "b25eb13e2b9805c00e7a51eb01cd4a27";
 
-// Variable for storing the city that the user searched for
-let city = "";
+localStorage.setItem("cities", "[]");
 
 // Activates the API call when the user clicks the search button
 $("#submitBTN").on("click", getWeather);
@@ -28,6 +27,13 @@ $("#submitBTN").on("click", getWeather);
 function getWeather(event) {
   event.preventDefault();
   city = searchField.val();
+  let upperCity = city.toUpperCase();
+  if (!city) {
+    return;
+  }
+  let searchedCities = JSON.parse(localStorage.getItem("cities"));
+  searchedCities.push(city);
+  localStorage.setItem("cities", JSON.stringify(searchedCities));
   let queryURL =
     "http://api.openweathermap.org/data/2.5/weather?q=" +
     city +
@@ -40,7 +46,20 @@ function getWeather(event) {
     console.log(response);
     displayWeather(response);
     getUVI(response);
+    saveCity(upperCity);
   });
+}
+
+function saveCity(upperCity) {
+  $(".prevSearchTitle").html("Previous Searches:");
+  $(".prevSearches").append(
+    $(document.createElement("button")).prop({
+      type: "button",
+      innerHTML: upperCity,
+      class: "btn-styled",
+      click: function () {},
+    })
+  );
 }
 
 // Function to display the current-day weather info from the API call
