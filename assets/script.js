@@ -99,7 +99,7 @@ function displayPrevious(city) {
 }
 
 // Function to make a second API call to retrieve information on the UV Index and a 5-day forecast,
-//
+// displays the information on the DOM, and calls functions to display the remaining information
 function getUVI(response) {
   let lat = response.coord.lat;
   let lon = response.coord.lon;
