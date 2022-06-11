@@ -36,4 +36,4 @@ upon user input. Two API calls were required; one to make the search function by
 
 URL of deployed application: https://jevenden.github.io/Weather-Tracker-Challenge/
 
-![screenshot](https://user-images.githubusercontent.com/102879070/173199443-c83752c2-ea2e-4783-93ca-51dfe5e9a554.jpg)
+![screenshot](https://user-images.githubusercontent.com/102879070/173206795-1756b534-81cb-41fe-a26f-bf9e9cd7594d.jpg)
