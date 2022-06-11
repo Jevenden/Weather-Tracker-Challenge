@@ -38,7 +38,7 @@ function getWeather(event) {
   $("#searchField").val("");
 
   let queryURL =
-    "http://api.openweathermap.org/data/2.5/weather?q=" +
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
     city +
     "&units=imperial&appid=" +
     APIKey;
@@ -85,7 +85,7 @@ function recall() {
 // repopulates the current and 5-day forecast, but does not re-commit to local storage
 function displayPrevious(city) {
   let queryURL =
-    "http://api.openweathermap.org/data/2.5/weather?q=" +
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
     city +
     "&units=imperial&appid=" +
     APIKey;
