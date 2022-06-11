@@ -18,12 +18,29 @@ let date = moment().format("dddd") + ", " + moment().format("MMMM Do");
 // API Key from OpenWeather
 let APIKey = "b25eb13e2b9805c00e7a51eb01cd4a27";
 
-localStorage.setItem("cities", "[]");
-
 // Activates the API call when the user clicks the search button
 $("#submitBTN").on("click", getWeather);
 
+// Activates a previous API call when the user clicks on a previously searched-for city
 $(document).on("click", ".cityButton", recall);
+
+if (localStorage.getItem("cities") == null) {
+  localStorage.setItem("cities", "[]");
+}
+
+window.onload = function () {
+  prevCities = JSON.parse(localStorage.getItem("cities"));
+  for (i = 0; i < prevCities.length; i++) {
+    let city = prevCities[i];
+    $(".prevSearches").append(
+      $(document.createElement("button")).prop({
+        type: "button",
+        innerHTML: city,
+        class: "cityButton",
+      })
+    );
+  }
+};
 
 // Function to make it initial API call and call the display functions
 function getWeather(event) {
@@ -53,14 +70,30 @@ function getWeather(event) {
   });
 }
 
+// .then(function (response) {
+//     if (response.cod == 200) {
+//       sCity = JSON.parse(localStorage.getItem("cities"));
+//       console.log(sCity);
+//       if (sCity == null){
+//         sCity = [];
+//         sCity.push(city)
+//       };
+//   localStorage.setItem("cities", JSON.stringify(sCity));
+//   push(city)
+//       }
+//       else {
+//         if(find(city)>0){
+//           sCity.push(city);
+//           localStorage.setItem("cities",JSON.stringify(sCity));
+//           push(city)
+//         }}
+
 function saveCity(city) {
-  $(".prevSearchTitle").html("Previous Searches:");
   $(".prevSearches").append(
     $(document.createElement("button")).prop({
       type: "button",
       innerHTML: city,
       class: "cityButton",
-      // click: displayPrevious(city),
     })
   );
 }
