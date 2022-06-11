@@ -33,3 +33,7 @@ THEN I am again presented with current and future conditions for that city
 To begin with I created all the structural elements I would need in HTML, using Boostrap. Afterwards I implemented the necessary
 API calls to get the required information from OpenWeather and the necessary Javascript to display the information dynamically
 upon user input. Two API calls were required; one to make the search function by city, and another to retrieve the UVI and 5-day-forecast. That complete, I stored the previous searches to local memory and created clickable buttons for each search that would re-run the search and dynamically re-display the information upon click. Finally, I added some if statements to prevent invalid or repeat searches from being stored to user memory.
+
+URL of deployed application: https://jevenden.github.io/Weather-Tracker-Challenge/
+
+![screenshot](https://user-images.githubusercontent.com/102879070/173199443-c83752c2-ea2e-4783-93ca-51dfe5e9a554.jpg)

@@ -7,6 +7,9 @@ let APIKey = "b25eb13e2b9805c00e7a51eb01cd4a27";
 // Eventlistener that activates the initial API call when the user clicks the search button
 $("#submitBTN").on("click", getWeather);
 
+// Eventlistener that clears local storage and removes the callback buttons when the user clicks the clear button
+$("#clearBTN").on("click", clearData);
+
 // Eventlistener that re-activates a previous API call when the user clicks on a previously searched-for city
 $(document).on("click", ".cityButton", recall);
 
@@ -30,6 +33,11 @@ window.onload = function () {
   }
 };
 
+// Clears local storage and removes the recall buttons
+function clearData() {
+  localStorage.setItem("cities", "[]");
+}
+
 // Function to make the initial API call, save the search to local storage,
 // and make the second API call for UVI and the 5-day forecast
 function getWeather(event) {
@@ -46,13 +54,17 @@ function getWeather(event) {
   $.ajax({
     url: queryURL,
     method: "GET",
-  }).then(function (response) {
-    if (response.cod == 200) {
-      console.log(response);
-      saveCity(city);
-      getUVI(response);
-    }
-  });
+  })
+    .then(function (response) {
+      if (response.cod == 200) {
+        console.log(response);
+        saveCity(city);
+        getUVI(response);
+      }
+    })
+    .catch(function (error) {
+      alert("Please Enter a Valid City");
+    });
 }
 
 // Checks if the city the user searched for is already in local memory and, if not,
@@ -66,11 +78,13 @@ function saveCity(city) {
     localStorage.setItem("cities", JSON.stringify(searchedCities));
 
     $(".prevSearches").append(
-      $(document.createElement("button")).prop({
-        type: "button",
-        innerHTML: city,
-        class: "cityButton",
-      })
+      $(document.createElement("button"))
+        .prop({
+          type: "button",
+          innerHTML: city,
+          class: "cityButton",
+        })
+        .on("click", recall)
     );
   }
 }
