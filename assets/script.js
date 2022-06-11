@@ -23,17 +23,20 @@ localStorage.setItem("cities", "[]");
 // Activates the API call when the user clicks the search button
 $("#submitBTN").on("click", getWeather);
 
+$(document).on("click", ".cityButton", recall);
+
 // Function to make it initial API call and call the display functions
 function getWeather(event) {
   event.preventDefault();
   city = searchField.val();
-  let upperCity = city.toUpperCase();
   if (!city) {
     return;
   }
+
   let searchedCities = JSON.parse(localStorage.getItem("cities"));
   searchedCities.push(city);
   localStorage.setItem("cities", JSON.stringify(searchedCities));
+
   let queryURL =
     "http://api.openweathermap.org/data/2.5/weather?q=" +
     city +
@@ -46,20 +49,41 @@ function getWeather(event) {
     console.log(response);
     displayWeather(response);
     getUVI(response);
-    saveCity(upperCity);
+    saveCity(city);
   });
 }
 
-function saveCity(upperCity) {
+function saveCity(city) {
   $(".prevSearchTitle").html("Previous Searches:");
   $(".prevSearches").append(
     $(document.createElement("button")).prop({
       type: "button",
-      innerHTML: upperCity,
-      class: "btn-styled",
-      click: function () {},
+      innerHTML: city,
+      class: "cityButton",
+      // click: displayPrevious(city),
     })
   );
+}
+
+function recall() {
+  let city = this.innerHTML;
+  displayPrevious(city);
+}
+
+function displayPrevious(city) {
+  let queryURL =
+    "http://api.openweathermap.org/data/2.5/weather?q=" +
+    city +
+    "&units=imperial&appid=" +
+    APIKey;
+  $.ajax({
+    url: queryURL,
+    method: "GET",
+  }).then(function (response) {
+    console.log(response);
+    displayWeather(response);
+    getUVI(response);
+  });
 }
 
 // Function to display the current-day weather info from the API call
@@ -144,35 +168,3 @@ function forecast(data) {
     }
   }
 }
-
-// Function to evaluate and change the background color of the current forcast box accordingly
-
-// .catch(() => {
-//   currentCity.html(" Please enter a valid city");
-
-//
-// }
-
-// Random team advice
-// .current.weather[0].icon
-
-// .daily[0].weather[0].icon
-// daily[1].weather[0].icon
-
-// https://openweathermap.org/img/wn/${icon}@2x.png"
-
-//   $.ajax({
-//     url: queryURL,
-//     method: "GET",
-//   }).then(function(response));
-// }
-
-// let { main, name, sys, weather } = data;
-
-// var queryURL =
-//   "http://api.openweathermap.org/data/2.5/weather?q=" +
-//   city +
-//   "&appid=" +
-//   APIKey
-
-// https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}
