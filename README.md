@@ -26,8 +26,9 @@ THEN I am again presented with current and future conditions for that city
 
 ## Methodology
 
-```
 
 To begin with I created all the structural elements I would need in HTML, using Boostrap. Afterwards I implemented the necessary
 API calls to get the required information from OpenWeather and the necessary Javascript to display the information dynamically
 upon user input. Two API calls were required; one to make the search function by city, and another to retrieve the UVI and 5-day-forecast. That complete, I stored the previous searches to local memory and created clickable buttons for each search that would re-run the search and dynamically re-display the information upon click. Finally, I added some if statements to prevent invalid or repeat searches from being stored to user memory.
+
+[screenshot](https://user-images.githubusercontent.com/102879070/173197971-dabcb9f0-5b92-46bb-832e-1f6b463c59fc.jpg)
