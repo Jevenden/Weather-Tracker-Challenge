@@ -1,34 +1,36 @@
-# Weather-Tracker-Challenge
+# Weather-Tracker
 
-## User Story
+## Table of Contents
 
-```
-AS A traveler
-I WANT to see the weather outlook for multiple cities
-SO THAT I can plan a trip accordingly
-```
+[Description](#description)
 
-## Acceptance Criteria
+[Installation](#installation)
 
-```
-GIVEN a weather dashboard with form inputs
-WHEN I search for a city
-THEN I am presented with current and future conditions for that city and that city is added to the search history
-WHEN I view current weather conditions for that city
-THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-WHEN I view the UV index
-THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-WHEN I view future weather conditions for that city
-THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
-WHEN I click on a city in the search history
-THEN I am again presented with current and future conditions for that city
-```
+[Usage](#usage)
 
-## Methodology
+[Features](#features)
 
-To begin with I created all the structural elements I would need in HTML, using Boostrap. Afterwards I implemented the necessary
-API calls to get the required information from OpenWeather and the necessary Javascript to display the information dynamically
-upon user input. Two API calls were required; one to make the search function by city, and another to retrieve the UVI and 5-day-forecast. That complete, I stored the previous searches to local memory and created clickable buttons for each search that would re-run the search and dynamically re-display the information upon click. Next I added some "if" statements to prevent invalid or repeat searches from being stored to user memory. Finally I added an alert box for incorrect user input and created a clear button to remove local storage.
+[Information](#information)
+
+## Description
+
+A weather tracking app that uses the open weather API to allow the user to search and save by location and gives a weekly forecast, including, temp, humidity, wind, and UV index.
+
+## Installation
+
+No installation necessary, simply navigate to https://jevenden.github.io/Weather-Tracker-Challenge/
+
+## Usage
+
+Simply enter the name of a city on the top left and click "search". The next weeks' forecast will be displayed, and the city you searched for will be saved to local memory, creating a button on the top right that can be clicked to re-run the search later.
+
+## Features
+
+-Fast, clean, and simple design.
+-Accurate forcasts up to a week out, with data on temp, humidity, wind, and UV index.
+-Previous searches are saved for ease of recall.
+
+## Information
 
 URL of deployed application: https://jevenden.github.io/Weather-Tracker-Challenge/
 
